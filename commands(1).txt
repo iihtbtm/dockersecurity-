@@ -1,0 +1,4 @@
+docker run -itd -v /var/run/docker.sock:/var/run/docker.sock alpine:latest
+apk update
+apk add docker
+docker -H unix:///var/run/docker.sock run -it -v /:/test:ro -t alpine sh

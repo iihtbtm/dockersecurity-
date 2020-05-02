@@ -1,0 +1,7 @@
+docker pull ubuntu:12.04
+docker run -d -p 5432:5432 --name db arminc/clair-db:latest
+docker run -d -p 6060:6060 --link db:postgres --name clair arminc/clair-local-scan:latest
+
+Make sure two containers are started and do a nmap scan on port 6060 to make sure the clair service is running.
+
+./clair-scanner --ip 172.17.0.1 -r clair_report.json ubuntu:12.04

